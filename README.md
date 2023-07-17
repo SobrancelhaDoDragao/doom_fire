@@ -10,6 +10,7 @@
 </div>
 
 ## Instalação 
-<code>pip install -r requirements.txt</code>
-<code>python main</code>
+
+1. <code>pip install -r requirements.txt</code>
+2. <code>python main</code>
 
