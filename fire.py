@@ -12,9 +12,9 @@ from numba import njit
 
 class DoomFire:
 
-    STEPS_BETWEEN_COLORS = 6
+    STEPS_BETWEEN_COLORS = 9
     COLORS = ['black','red','orange','yellow','white']
-    PIXEL_SIZE = 5
+    PIXEL_SIZE = 4
   
     def __init__(self,app):
         self.app = app
@@ -57,8 +57,8 @@ class DoomFire:
         Função que pinta a tela de acordo com os valores do fire array.
         """
         for (x,y,color_index) in self.calc_fire(self.fire_array):  
-            gfxdraw.box(self.app.screen, (x * self.PIXEL_SIZE, y * self.PIXEL_SIZE, self.PIXEL_SIZE, self.PIXEL_SIZE), self.palette[color_index])
-          
+            gfxdraw.box(self.app.screen, (x * self.PIXEL_SIZE, y * self.PIXEL_SIZE, self.PIXEL_SIZE -1, self.PIXEL_SIZE -1), self.palette[color_index])
+    
     def get_fire_array(self):
         """
         Retorna um array com os indices das cores. Atenção não retorna as cores no formato rgb
@@ -67,6 +67,7 @@ class DoomFire:
         fire_array = [[0 for i in range(self.FIRE_WIDTH)] for j in range(self.FIRE_HEIGHT)]
         for i in range(self.FIRE_WIDTH):
             fire_array[self.FIRE_HEIGHT - 1][i] = len(self.palette) - 1
+        
         return np.array(fire_array)
         
     def draw_pallete(self):

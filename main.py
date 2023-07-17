@@ -11,6 +11,7 @@ class Game:
     
     WIDTH, HEIGHT = 600, 600
     WIN_SIZE = WIDTH, HEIGHT 
+    FPS = 30
 
     def __init__(self):
         self.screen = pg.display.set_mode(size=self.WIN_SIZE)
@@ -19,7 +20,7 @@ class Game:
     
     def update(self):
         self.doom_fire.update()
-        self.clock.tick(60)
+        self.clock.tick(self.FPS)
         pg.display.set_caption(f"{self.clock.get_fps() :.1f}")
     
     def draw(self):
